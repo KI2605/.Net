@@ -10,13 +10,13 @@ namespace Chapter3and4
     {
         private readonly RequestDelegate _next;
         private int i = 0;
-       // TimeService _timeService;
+        TimeService _timeService;
         public CounterMiddleware(RequestDelegate next,TimeService timeService)
         {
             _next = next;
-         //   _timeService = timeService;
+            _timeService = timeService;
         }
-        public async Task Invoke(HttpContext context, CounterService cs, ICounter c, TimeService _timeService)
+        public async Task Invoke(HttpContext context, CounterService cs, ICounter c)
         {
            
                 //context.Response.ContentType = "text/html; charset=utf-8";
