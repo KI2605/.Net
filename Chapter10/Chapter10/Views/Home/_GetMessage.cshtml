@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Phone>
+<h3>Список моделей</h3>
+<ul>
+    @{
+        // Phone phone = new Phone();
+        @foreach (var i in Model)
+        {
+            <li>@i.Title</li>
+
+        }
+
+    }
+
+</ul>
+@inject Chapter10.Services.ITimeService Timer
+<h2>Текущее время: @Timer.GetTime()</h2>
