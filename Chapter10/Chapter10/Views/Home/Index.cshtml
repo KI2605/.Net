@@ -1,0 +1,51 @@
+﻿@{
+    //Layout = null;
+    Layout = "~/Views/_Master.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home Page</title>
+</head>
+@section Footer {
+    Все права защищены. Site Corp. 2021.
+}
+<body>
+    <h2>Представление Index.cshtml</h2>
+
+    @functions
+{
+        public int GetFactorial(int n)
+        {
+            int result = 1;
+            for (int i = 1; i <= n; i++)
+                result *= i;
+            return result;
+        }
+    }
+    <div>Факториал числа 6 равен: @GetFactorial(6)</div>
+
+    <h3>В списке @ViewBag.Countries.Count элемента:</h3>
+
+    @foreach (string country in ViewBag.Countries)
+    {
+        <p>@country</p>
+    }
+    @{
+        Phone phone = new Phone { Title = "iPhone 7", Company = "Apple", Price = 56000 };
+    }
+
+    <p>@phone.Title</p>
+    @*Метод Html.PartialAsync() встраивает код частичного представления в обычное  *@
+    @*@await Html.PartialAsync("_GetMessage")*@
+
+    @await Html.PartialAsync("_GetMessage", new List<Phone> { new Phone { Title = "Lumia 950", Company = "Nokia", Price = 3000 }, new Phone { Title = "Iphone X", Company = "Apple", Price = 10000 }, new Phone { Title = "Samsung Galaxy S10", Company = "Samsung", Price = 13000 } })
+
+    @await Html.PartialAsync("Login")
+    <a href="~/Home/PhoneChoice">Купить</a>
+
+</body>
+</html>
