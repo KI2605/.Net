@@ -46,6 +46,17 @@ namespace ServerUser.Controllers
             // return RedirectToAction("Index");
             return Unauthorized("The User is not registered");
         }
+        protected string Page_Load(object sender, EventArgs e)
+{
+    if (User.Identity.IsAuthenticated)
+    {
+                return "yehooo";
+    }
+    else
+    {
+                return "no yehooo for you";
+    }
+}
         [HttpPost]
         public string Authorization(User user)
         {
