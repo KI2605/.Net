@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ServerUser.Controllers
 {
+    
     public class HomeController : Controller
     {
         UserContext db;
@@ -75,6 +76,20 @@ namespace ServerUser.Controllers
             //// сохраняем в бд все изменения
             //db.SaveChanges();
             //return "Спасибо, " + order.User + ", за покупку!";
+        }
+        [HttpGet][Route("Users")]
+        public JsonResult GetUsers()
+        {
+            //foreach(var i in db.Users)
+            //{
+            //    return Json(i);
+            //}
+            List<User> users = new List<User>();
+            foreach(var i in db.Users)
+            {
+                users.Add(i);
+            }
+            return Json(users);
         }
     }
 }
