@@ -1,0 +1,16 @@
+﻿@model Chapter13.Models.User
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <p>
+        @Html.LabelFor(m => m.Name, "Имя")<br />
+        @Html.Editor("Name")
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Age, "Возраст")<br />
+        @Html.EditorFor(m => m.Age)
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+}

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    string[] cities = new string[] { "Лондон", "Париж", "Берлин" };
+    string[] countries = new string[] { "Великобритания", "Франция", "Германия" };
+}
+@using Chapter13.App_Code
+
+@Html.DropDownList("daytime", Html.GetEnumSelectList(typeof(TimeOfDay)))
+<br />
+<p>
+    <input type="submit" value="Отправить" />
+</p>
+<h3>Города</h3>
+@Html.CreateList(cities)
+<br />
+<h3>Страны</h3>
+<!-- или можно вызвать так -->
+@ListHelper.CreateList(Html, countries)
+
