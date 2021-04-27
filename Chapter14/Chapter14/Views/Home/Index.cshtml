@@ -1,0 +1,27 @@
+﻿@using Chapter14.TagHelpers
+<script asp-src-include="~/js/**/*.js" asp-src-exclude="~/js/util/**/*.js"></script>
+<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.0/css/bootstrap.min.css"
+      asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+      asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<a asp-controller="Home" asp-action="Contacts" asp->Контакты</a>
+<a asp-controller="Home" asp-action="About" asp-host="localhost.com" asp-protocol="https">О сайте</a>
+<a asp-controller="Home" asp-action="GetPerson" asp-route-id="5" asp-route-age="21" asp-route-name="John">Item</a>
+<a asp-route="book">Книги</a>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<timer style='new StyleInfo{Color="#74b9ff", FontFamily="Verdana", FontSize=18}' />
+<timer style='new StyleInfo{Color="#ff7675", FontFamily="Arial", FontSize=18}' />
+<timers></timers>
+@{
+    List<string> countries = new List<string> { "Бразилия", "Аргентина", "Уругвай" };
+    List<string> cities = new List<string> { "Бразилиа", "Буэйнос-Айрес", "Монтевидео" };
+}
+
+<list elements="countries"></list>
+<list elements="cities"></list>
