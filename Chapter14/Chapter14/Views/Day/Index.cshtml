@@ -1,0 +1,18 @@
+﻿@using Chapter14.Models
+@model DayTimeViewModel
+
+<form method="post" asp-antiforgery="true">
+    <div>
+        <div>
+            <label asp-for="Period">Время суток</label>
+            <select asp-for="Period" asp-items="Html.GetEnumSelectList<DayTime>()"></select>
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+    <p>Время из Index: <b>@DateTime.Now.ToString("HH:mm:ss")</b></p>
+    <cache expires-after="@TimeSpan.FromMinutes(1)">
+        @await Html.PartialAsync("TimeView")
+    </cache>
+</form>
