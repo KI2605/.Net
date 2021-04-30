@@ -1,0 +1,23 @@
+﻿@page "{handler?}"
+@model Chapter18.Pages.PersonsModel
+@using Chapter18.Models
+@{
+}
+<h2>Список пользователей</h2>
+<form method="POST">
+    <input type="text" name="name" />
+    <input type="submit" asp-page-handler="Name" value="По имени" />
+    <input type="number" name="age" />
+    <input type="submit" asp-page-handler="AgeGreater" value="Старше" />
+    <input type="submit" asp-page-handler="AgeLess" value="Младше" />
+</form>
+<table class="table">
+    <tr><td>Name</td><td>Age</td></tr>
+    @foreach (Person person in Model.DisplayedPeople)
+    {
+        <tr>
+            <td>@person.Name</td>
+            <td>@person.Age</td>
+        </tr>
+    }
+</table>

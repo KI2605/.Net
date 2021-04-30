@@ -1,0 +1,10 @@
+﻿@page
+@model Chapter18.Pages.ExchangeModel
+@{
+    ViewData["Title"] = "Обмен валют";
+}
+<h2>@Model.Message</h2>
+<form method="post">
+    <input type="number" name="sum" />
+    <input type="submit" value="Send" />
+</form>

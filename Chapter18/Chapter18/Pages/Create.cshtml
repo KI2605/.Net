@@ -1,0 +1,12 @@
+﻿@page
+@model Chapter18.Pages.CreateModel
+@{
+    ViewData["Title"] = "Добавление нового пользователя";
+}
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div><label>Имя</label><br /><input asp-for="Human.Name" /></div>
+    <div><label>Пароль:</label><br /><input asp-for="Human.Password" type="number" /></div>
+    <input type="submit" value="Отправить" />
+</form>
