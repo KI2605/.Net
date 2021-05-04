@@ -81,7 +81,7 @@ namespace Chapter17.Controllers
         [HttpPost] 
         public IActionResult AddServiceReview(string name,float mark)
         {
-            foreach(var i in db.Services)
+            foreach(var i in db.Services.ToList())
             {
                 if (i.Name == name)
                 {
