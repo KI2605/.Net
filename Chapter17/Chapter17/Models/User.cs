@@ -15,5 +15,7 @@ namespace Chapter17.Models
         public string Password { get; set; }
         [BindNever]
         public bool IsAdmin { get; set; }
+
+
     }
 }
