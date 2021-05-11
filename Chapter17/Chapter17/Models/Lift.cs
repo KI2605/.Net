@@ -11,5 +11,7 @@ namespace Chapter17.Models
         public string Name { get; set; }
         public bool IsWorking { get; set; }
         public float Mark { get; set; }
+
+        public List<LiftReview> Reviews { get; set; }
     }
 }
