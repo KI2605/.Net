@@ -16,7 +16,7 @@ namespace Chapter17.Controllers
         BukoContext db;
         public HomeController(BukoContext context)
         {
-            
+
             db = context;
             if (!db.Services.Any())
             {
@@ -78,32 +78,38 @@ namespace Chapter17.Controllers
         {
             return View();
         }
-        [HttpPost] 
-        public IActionResult AddServiceReview(string name,float mark)
+        [HttpPost]
+        public IActionResult AddServiceReview(ServiceReview s)
         {
-            foreach(var i in db.Services.ToList())
+            foreach (var j in db.Users.ToList())
             {
-                if (i.Name == name)
+                if (j.NickName == s.User.NickName)
                 {
+                    foreach (var i in db.Services.ToList())
+                    {
+                        if (i.Name == s.Service.Name)
+                        {
+                            ServiceReview s1 = new ServiceReview { ServiceId = i.Id, Mark = s.Mark, Service = i, Review = "",User=j,UserId=j.Id };
+                            //await db.ServiceReviews.ToListAsync();
+                            //foreach (var j in db.ServiceReviews)
+                            //{
+                            //    j.ServiceId = s.ServiceId;
+                            //    j.Mark = s.Mark;
+                            //    //j.Service = from sc in db.Services
+                            //    //            where sc.Id = 
+                            //    //            select sc;
+                            //    j.Service = i;
+                            db.ServiceReviews.Add(s);
+                            db.SaveChanges();
+                            return Content("good");
+                            //}
 
-                    ServiceReview s = new ServiceReview {ServiceId=i.Id, Mark = mark,Service=i,Review=""};
-                    //await db.ServiceReviews.ToListAsync();
-                    //foreach (var j in db.ServiceReviews)
-                    //{
-                    //    j.ServiceId = s.ServiceId;
-                    //    j.Mark = s.Mark;
-                    //    //j.Service = from sc in db.Services
-                    //    //            where sc.Id = 
-                    //    //            select sc;
-                    //    j.Service = i;
-                        db.ServiceReviews.Add(s);
-                        db.SaveChanges();
-                        return Content("good");
-                    //}
-                    
+                        }
+                    }
                 }
             }
-            return Content("unable");
+                return Content("unable");
+            
         }
         [HttpGet]
         public async Task<IActionResult> Edit(int ?id)

@@ -1,13 +1,21 @@
-﻿<form method="post" controller="home" action="AddServiceReview">
-    <tr>
-        <td>Name:</td>
-        <td><input type="text" name="name" /></td>
-
-    </tr>
-    <tr>
-        <td>Mark:</td>
-        <td><input type="text" name="mark" /> </td>
-
-    </tr>
-    <td><input type="submit" class="btn btn-default" value="отправить" /></td>
+﻿@model Chapter17.Models.ServiceReview
+@{
+    ViewBag.Title = "Добавление отзыва о сервисе";
+}
+<form asp-action="AddServiceReview" asp-controller="Home">
+    <div class="form-group">
+        <label asp-for="User.NickName" class="control-label">Имя Пользователя</label>
+        <input type="text" asp-for="User.NickName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Service.Name" class="control-label">Имя Сервиса</label>
+        <input type="text" asp-for="Service.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Mark" class="control-label">Оценка</label>
+        <input type="number" asp-for="Mark" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-default" />
+    </div>
 </form>
