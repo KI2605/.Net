@@ -9,7 +9,9 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Chapter17
 {
@@ -30,8 +32,12 @@ namespace Chapter17
             services.AddDbContext<BukoContext>(options =>
                  options.UseSqlServer(connectionString));
 
-            services.AddControllersWithViews(); // используем контроллеры 
-            
+            services.AddControllersWithViews().AddNewtonsoftJson(
+          options => {
+              options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+          }); ; // используем контроллеры 
+         
+           
         }
 
 

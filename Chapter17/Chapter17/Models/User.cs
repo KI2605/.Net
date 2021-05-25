@@ -19,6 +19,10 @@ namespace Chapter17.Models
         [BindNever]
         public bool IsAdmin { get; set; }
 
-
+        //public List<ServiceReview> ServiceReviews { get; set; }
+        //public User()
+        //{
+        //    ServiceReviews = new List<ServiceReview>();
+        //}
     }
 }

@@ -17,25 +17,7 @@ namespace Chapter17.Models
 
         public List<ServiceReview> Reviews { get; set; }
 
-        public float Mark { get { return mark; } set {
-                float sum = 0;
-                int count = 0;
-            foreach(var i in Reviews)
-                {
-                    sum += i.Mark;
-                    count++;
-                }
-                if (count > 0)
-                {
-                    mark = sum / count;
-                }
-                else
-                {
-                    mark = 0;
-                }
-            }
-            
-        }
+        public float Mark { get; set; }
         public Service()
         {
             Reviews = new List<ServiceReview>();
